@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useCallback, useRef } from "react";
-import {produce} from "immer"; // Changed import from "immer" directly
+import {produce} from "immer"; 
 import { characterPatterns } from "../patterns";
 
 import "./Game.css";
@@ -49,14 +49,13 @@ const placeName = (grid, name, startX, startY) => {
     const pattern = characterPatterns[char];
     if (!pattern) return newGrid;
 
-    // Check if the character fits in the current row, else move to the next row
     if (currentY + pattern[0].length > numCols) {
-      currentX += pattern.length + 1; // Move to the next row
-      currentY = startY; // Reset to startY
+      currentX += pattern.length + 1; 
+      currentY = startY; 
     }
 
     const updatedGrid = placeCharacter(newGrid, char, currentX, currentY);
-    currentY += pattern[0].length + 1; // Move to the next position, 1 space in between characters
+    currentY += pattern[0].length + 1;
     return updatedGrid;
   }, grid);
 };
@@ -97,14 +96,14 @@ const Game = () => {
   }, []);
 
   const handleClearGrid = () => {
-    setGrid(generateEmptyGrid()); // Reset the grid
-    setRunning(false); // Stop the simulation
+    setGrid(generateEmptyGrid()); 
+    setRunning(false);
   };
 
   const handlePlaceName = () => {
     const newGrid = placeName(generateEmptyGrid(), name, 2, 2);
     setGrid(newGrid);
-    setName(""); // Clear the name input field
+    setName("");
   };
 
   return (
